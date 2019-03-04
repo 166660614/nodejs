@@ -29,7 +29,7 @@
         $('form').submit(function(e){
             e.preventDefault(); // prevents page reloading
            //socket.emit('chat message', $('#m').val());
-            socket.emit('chat message',tanmu(('#m').val(),"#f00",8,0) );
+            socket.emit('chat message',tanmu($('#m').val(),"#f00",8,0) );
             $('#m').val('');
             //tanmu(('#m').val(),"#f00",8,0)
             return false;
