@@ -14,7 +14,8 @@
     </style>
 </head>
 <body>
-<marquee behavior="scroll" direction="right" scrollamount="8"></marquee>
+<div class ="div2">
+</div>
 <ul id="messages"></ul>
 <form action="">
     <input id="m" autocomplete="off" />
@@ -27,14 +28,24 @@
         var socket = io();
         $('form').submit(function(e){
             e.preventDefault(); // prevents page reloading
-           socket.emit('chat message', $('#m').val());
-           $('marquee').text($(('#m').val()));
+           //socket.emit('chat message', $('#m').val());
+            socket.emit('chat message',tanmu(('#m').val(),"#f00",8,0) );
             $('#m').val('');
+            //tanmu(('#m').val(),"#f00",8,0)
             return false;
         });
+
         socket.on('chat message', function(msg){
             $('#messages').append($('<li>').text(msg));
         });
+        function tanmu(content, fontColor, speed, startTime) {
+            function add(content, speed) {
+                var html = "";
+                html += "<marquee   scrolldelay='1000' direction='left' scrollamount='" + speed + "' style='color:" + fontColor + "'>" + content + "</marquee>";
+                $(".div2").append(html);
+            }
+            //调用弹幕函数
+        }
     });
 </script>
 </body>
