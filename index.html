@@ -27,8 +27,8 @@
         var socket = io();
         $('form').submit(function(e){
             e.preventDefault(); // prevents page reloading
-           // socket.emit('chat message', $('#m').val());
-            socket.emit('chat message', $('marquee').text());
+           socket.emit('chat message', $('#m').val());
+           $('marquee').text($(('#m').val()));
             $('#m').val('');
             return false;
         });
